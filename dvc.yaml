@@ -1,0 +1,30 @@
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+      - preprocess.py
+      - data/diabetes.csv
+    outs:
+      - data/train.csv
+      - data/test.csv
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data/train.csv
+    outs:
+      - models/model.joblib
+
+  validate:
+    cmd: python validate.py
+    deps:
+      - validate.py
+      - data/test.csv
+      - models/model.joblib
+    metrics:
+      - metrics.json:
+          cache: false
+    plots:
+      - confusion_matrix.png:
+          cache: false
