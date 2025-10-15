@@ -2,7 +2,7 @@ stages:
   preprocess:
     cmd: python preprocess.py
     deps:
-      -             
+      - preprocess.py
       - data/diabetes.csv
     outs:
       - data/train.csv

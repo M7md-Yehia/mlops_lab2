@@ -1,0 +1,62 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: data/diabetes.csv
+      hash: md5
+      md5: 2fef5f3fd179b50c71a85a8f6b7d6e93
+      size: 23875
+    - path: preprocess.py
+      hash: md5
+      md5: d3d27f4eee55366ccbff4a8f14854cbf
+      size: 1018
+    outs:
+    - path: data/test.csv
+      hash: md5
+      md5: 259d3d0fa0d03897bd8165582773fd22
+      size: 8290
+    - path: data/train.csv
+      hash: md5
+      md5: c16b3a79cdd385157d618959cdd71b2c
+      size: 31377
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/train.csv
+      hash: md5
+      md5: c16b3a79cdd385157d618959cdd71b2c
+      size: 31377
+    - path: train.py
+      hash: md5
+      md5: c69e97eea83aee948e3285dfc56f35e7
+      size: 661
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: 6b65c2a7e16a11207d61519d103f75c3
+      size: 1307
+  validate:
+    cmd: python validate.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: 259d3d0fa0d03897bd8165582773fd22
+      size: 8290
+    - path: models/model.joblib
+      hash: md5
+      md5: 6b65c2a7e16a11207d61519d103f75c3
+      size: 1307
+    - path: validate.py
+      hash: md5
+      md5: 1f22b8da59ffc828bbc18fd2b8f633db
+      size: 1110
+    outs:
+    - path: confusion_matrix.png
+      hash: md5
+      md5: eb3eedcb169d86e52ef1dc1bfc06823f
+      size: 22322
+    - path: metrics.json
+      hash: md5
+      md5: a2b46236313eaeaa7911917d5cc323f3
+      size: 32
