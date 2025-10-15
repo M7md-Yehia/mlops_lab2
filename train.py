@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier 
 import joblib
 import os
 
@@ -11,7 +11,7 @@ X_train = train_df.drop('Outcome', axis=1)
 y_train = train_df['Outcome']
 
 # Train the model (Logistic Regression for the main pipeline)
-model = LogisticRegression(solver='liblinear', random_state=42)
+model = RandomForestClassifier(random_state=42)
 model.fit(X_train, y_train)
 
 # Ensure the models directory exists and save the trained model

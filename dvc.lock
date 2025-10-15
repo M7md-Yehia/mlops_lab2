@@ -29,13 +29,13 @@ stages:
       size: 31377
     - path: train.py
       hash: md5
-      md5: c69e97eea83aee948e3285dfc56f35e7
-      size: 661
+      md5: 84ad13eadebe2dbd8860c1dafbb91924
+      size: 646
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 6b65c2a7e16a11207d61519d103f75c3
-      size: 1307
+      md5: e3b22b685b7bcbcb698d2834604fbfa1
+      size: 1689145
   validate:
     cmd: python validate.py
     deps:
@@ -45,8 +45,8 @@ stages:
       size: 8290
     - path: models/model.joblib
       hash: md5
-      md5: 6b65c2a7e16a11207d61519d103f75c3
-      size: 1307
+      md5: e3b22b685b7bcbcb698d2834604fbfa1
+      size: 1689145
     - path: validate.py
       hash: md5
       md5: 1f22b8da59ffc828bbc18fd2b8f633db
@@ -54,9 +54,9 @@ stages:
     outs:
     - path: confusion_matrix.png
       hash: md5
-      md5: eb3eedcb169d86e52ef1dc1bfc06823f
-      size: 22322
+      md5: ee3dcf9c00567bb9d7717614ec622eac
+      size: 22163
     - path: metrics.json
       hash: md5
-      md5: a2b46236313eaeaa7911917d5cc323f3
+      md5: 90e3d661ed38663beb10bf83fcb44337
       size: 32
